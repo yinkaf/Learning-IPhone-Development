@@ -16,7 +16,8 @@
     
 }
 
-- (void)setOperand:(double)aDouble;
+@property double operand;
+
 - (double)performOperation:(NSString *)operation;
 
 @end

@@ -10,22 +10,19 @@
 
 
 @implementation CalculatorBrain
+@synthesize operand;
 
-- (void)setOperand:(double)aDouble
-{
-    operand = aDouble;
-}
 - (void)performWaitingOperation
 {
     if ([@"+" isEqual:waitingOperation]) {
-        operand = waitingOperand + operand;
+        operand = waitingOperand + self.operand;
     } else if([@"*" isEqual:waitingOperation]) {
-        operand = waitingOperand * operand;
+        operand = waitingOperand * self.operand;
     }else if([@"-" isEqual:waitingOperation]) {
-        operand = waitingOperand - operand;
+        operand = waitingOperand - self.operand;
     }else if([@"/" isEqual:waitingOperation]) {
         if (operand) {
-            operand = waitingOperand / operand;
+            operand = waitingOperand / self.operand;
         }
     }
 }
@@ -33,16 +30,16 @@
 - (double)performOperation:(NSString *)operation
 {
     if ([operation isEqual:@"sqrt"]) {
-        operand = sqrt(operand);
+        self.operand = sqrt(self.operand);
     }else if([@"+/-" isEqual:operation]){
-        operand = - operand; 
+        self.operand = - self.operand; 
     }
     else{
         [self performWaitingOperation];
         waitingOperation = operation;
-        waitingOperand = operand;
+        waitingOperand = self.operand;
     }
-    return operand;
+    return self.operand;
 }
 
 

@@ -21,6 +21,7 @@
 - (void)dealloc
 {
     [super dealloc];
+    [brain dealloc];
 }
 
 - (void)didReceiveMemoryWarning
